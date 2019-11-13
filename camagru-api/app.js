@@ -5,6 +5,7 @@ const passport = require("passport");
 const config = require("./db");
 
 const users = require("./routes/user");
+// const confirmationPost = require("./routes/confirmationPost");
 
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
   () => {
@@ -22,7 +23,12 @@ require("./passport")(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get("/api", (req, res) => {
+  res.json({ message: "API root." });
+});
+
 app.use("/api/users", users);
+// app.post("/api/users/confirmation", confirmationPost);
 
 app.get("/", function(req, res) {
   res.send("hello");
