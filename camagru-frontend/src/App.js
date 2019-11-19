@@ -8,11 +8,13 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Footer from "./Components/Footer/footer";
 import Confirm from "./Components/auth/Confirm";
-import NavBar from "../src/Components/Navbar/Navbar.js";
+import Navbar from "../src/Components/Navbar/Navbar.js";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authentication";
 import ForgotPW from "./Components/auth/ForgotPW.js";
+import ResetPW from "./Components/auth/resetPassword.js";
+import Profile from "./Components/Profile/Profile.js";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -34,12 +36,14 @@ function App() {
       <BrowserRouter>
         <div className="App">
           {/* <ButtonAppBar /> */}
-          <NavBar />
+          <Navbar />
           <Switch>
             <Route path="/register" exact component={Register} />
             <Route path="/login" exact component={Login} />
-            <Route path="/Forgot_Password" exact component={ForgotPW} />
+            <Route path="/forgotPassword" exact component={ForgotPW} />
             <Route path="/confirm/:token" exact component={Confirm} />
+            <Route path="/resetPassword/:token" exact component={ResetPW} />
+            <Route path="/profile" exact component={Profile} />
           </Switch>
           {/* <Footer /> */}
         </div>
